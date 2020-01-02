@@ -1,6 +1,7 @@
 /* eslint-disable no-undef */
 import './css/style.css';
 import importAll from './data';
+import preLoaderGIF from './images/loader.gif';
 
 const weatherAPIUrl = (location) => {
   const publicAPIKey = '3aab69399bf03eca438758bf6e33d18e';
@@ -10,19 +11,33 @@ const weatherAPIUrl = (location) => {
 
 const weatherIcon = icon => `http://openweathermap.org/img/wn/${icon}@2x.png`;
 
-const calculatedDateTime = (unixTime, timezone) =>{
+const calculatedDateTime = (unixTime, timezone) => {
   const d = new Date((unixTime + timezone) * 1000);
   return d.toGMTString();
 };
 
-const weatherBackgroundCover = (data) => {
+const weatherBackgroundCover = (bg) => {
   const images = importAll(
     require.context('../src/images/weather/', false, /\.(png|jpg|jpeg)$/),
   );
-  return images[`${data.main}`.toLowerCase()];
+  const key = `${bg.toLowerCase()}.jpg`;
+  return images[key].default;
+};
+const togglePreLoader = (active = false) => {
+  if (active) {
+    document.getElementById('pre-loader')
+      .setAttribute('class', 'loader no-display');
+    document.getElementById('pre-loader-gif').src = '';
+  } else {
+    document.getElementById('pre-loader-gif').src = preLoaderGIF;
+    document.getElementById('pre-loader')
+      .removeAttribute('class');
+  }
 };
 
 const updateWeatherUI = (data) => {
+  document.getElementById('main').style.backgroundImage = `url(${weatherBackgroundCover(data.weather[0].main)})`;
+  document.getElementById('main').style.backgroundPosition = 'center';
   document.getElementById('weather-icon').src = weatherIcon(data.weather[0].icon);
   document.getElementById('weather-icon-2').src = weatherIcon(data.weather[0].icon);
   document.getElementById('weather-location').innerHTML = `${data.name}`.toUpperCase();
@@ -40,9 +55,11 @@ const updateWeatherUI = (data) => {
     .toLocaleTimeString().slice(-10, -6)} PM`;
 
   document.getElementById('search-form').reset();
+  togglePreLoader(true);
 };
 
 const makeAPICall = (url) => {
+  togglePreLoader(false);
   fetch(url,
     {
       mode: 'cors',
@@ -53,6 +70,11 @@ const makeAPICall = (url) => {
     .catch(err => `error: ${err}`);
 };
 
+const loadDefaultWeather = () => {
+  const defaultLocation = 'London';
+  const url = weatherAPIUrl(defaultLocation);
+  makeAPICall(url);
+};
 
 document.getElementById('btn-search')
   .addEventListener('click', () => {
@@ -61,7 +83,4 @@ document.getElementById('btn-search')
     makeAPICall(url);
   });
 
-
-const defaultLocation = 'London';
-const url = weatherAPIUrl(defaultLocation);
-makeAPICall(url);
+loadDefaultWeather();
