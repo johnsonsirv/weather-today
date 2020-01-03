@@ -70,7 +70,7 @@ const makeAPICall = (url) => {
     })
     .then(response => response.json())
     .then(data => updateWeatherUI(data))
-    .catch(err => alert(`error: ${err}. something went wrong. try again`));
+    .catch(() => alert('error: something went wrong. try again'));
 };
 
 const loadDefaultWeather = () => {
