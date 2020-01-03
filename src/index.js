@@ -20,7 +20,6 @@ const weatherBackgroundCover = (bg) => {
   const images = importAll(
     require.context('../src/images/weather/', false, /\.(png|jpg|jpeg)$/),
   );
-  console.log('weather',bg);
   const key = `${bg.toLowerCase()}.jpg`;
   return (images[key] !== undefined) ? images[key].default : images['default.jpg'].default;
 };
@@ -68,7 +67,7 @@ const makeAPICall = (url) => {
     })
     .then(response => response.json())
     .then(data => updateWeatherUI(data))
-    .catch(err => alert('error: something went wrong. try again'));
+    .catch(() => alert('error: something went wrong. try again'));
 };
 
 const loadDefaultWeather = () => {

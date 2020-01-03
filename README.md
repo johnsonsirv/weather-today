@@ -1,7 +1,7 @@
 [![Netlify Status](https://api.netlify.com/api/v1/badges/c9424649-60c1-4860-aeb2-a1dfede32144/deploy-status)](https://app.netlify.com/sites/ntachi-osa/deploys)
 
 # Weather Widget
-[Weather Widget]() is a simple weather app that explores how to work with APIs in JavaScrript. It demonstrates the knowledge of ``asynchronous`` workflow through the use of ``Promises``, ``Async & Await``, and ``JSON`` to serve data from a remote API.
+[Weather Widget](https://js-weather-widget.netlify.com/) is a simple weather app that explores how to work with APIs in JavaScrript. It demonstrates the knowledge of ``asynchronous`` workflow through the use of ``Promises``, ``Async & Await``, and ``JSON`` to serve data from a remote API.
 
 It contains basic features such as -
 1. Search the current weather in a desired City
@@ -9,7 +9,7 @@ It contains basic features such as -
 
 This project was completed in line with standards provided by [Microverse](https://www.microverse.org/ "The Global School for Remote Software Developers!").
 
--- See Demo URL- [Weather Widget]()
+-- See Demo URL- [Weather Widget](https://js-weather-widget.netlify.com/)
 
 ## Technologies
 
