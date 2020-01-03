@@ -20,8 +20,9 @@ const weatherBackgroundCover = (bg) => {
   const images = importAll(
     require.context('../src/images/weather/', false, /\.(png|jpg|jpeg)$/),
   );
+  console.log('weather',bg);
   const key = `${bg.toLowerCase()}.jpg`;
-  return images[key].default;
+  return (images[key] !== undefined) ? images[key].default : images['default.jpg'].default;
 };
 const togglePreLoader = (active = false) => {
   if (active) {
@@ -67,11 +68,11 @@ const makeAPICall = (url) => {
     })
     .then(response => response.json())
     .then(data => updateWeatherUI(data))
-    .catch(err => `error: ${err}`);
+    .catch(err => alert('error: something went wrong. try again'));
 };
 
 const loadDefaultWeather = () => {
-  const defaultLocation = 'London';
+  const defaultLocation = 'Lagos';
   const url = weatherAPIUrl(defaultLocation);
   makeAPICall(url);
 };
