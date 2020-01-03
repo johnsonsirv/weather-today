@@ -5,11 +5,11 @@ import preLoaderGIF from './images/loader.gif';
 
 const weatherAPIUrl = (location) => {
   const publicAPIKey = '3aab69399bf03eca438758bf6e33d18e';
-  const weatherAPI = `http://api.openweathermap.org/data/2.5/weather?q=${location}&units=metric&appid=${publicAPIKey}`;
+  const weatherAPI = `https://api.openweathermap.org/data/2.5/weather?q=${location}&units=metric&appid=${publicAPIKey}`;
   return weatherAPI;
 };
 
-const weatherIcon = icon => `http://openweathermap.org/img/wn/${icon}@2x.png`;
+const weatherIcon = icon => `https://openweathermap.org/img/wn/${icon}@2x.png`;
 
 const calculatedDateTime = (unixTime, timezone) => {
   const d = new Date((unixTime + timezone) * 1000);
