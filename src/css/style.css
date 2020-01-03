@@ -89,6 +89,11 @@ main {
   font-size: 5.4em;
   line-height: 2em;
 }
+#weather-temp-fah {
+  font-size: 1.3em;
+  color: #f8cfcf;
+  font-weight: bold;
+}
 #weather-date-time {
   font-size: 2em;
 }

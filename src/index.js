@@ -35,6 +35,8 @@ const togglePreLoader = (active = false) => {
   }
 };
 
+const weatherTempInFahrenheit = celcius => ((celcius * (9 / 5)) + 32).toFixed(2);
+
 const updateWeatherUI = (data) => {
   document.getElementById('main').style.backgroundImage = `url(${weatherBackgroundCover(data.weather[0].main)})`;
   document.getElementById('main').style.backgroundPosition = 'center';
@@ -42,6 +44,7 @@ const updateWeatherUI = (data) => {
   document.getElementById('weather-icon-2').src = weatherIcon(data.weather[0].icon);
   document.getElementById('weather-location').innerHTML = `${data.name}`.toUpperCase();
   document.getElementById('weather-temp').innerHTML = `${data.main.temp} &#8451;`;
+  document.getElementById('weather-temp-fah').innerHTML = `${weatherTempInFahrenheit(data.main.temp)} &#8457;`;
   document.getElementById('weather-date-time').innerHTML = calculatedDateTime(data.dt, data.timezone);
   document.getElementById('weather-main').textContent = `${data.weather[0].main}`.toUpperCase();
   document.getElementById('weather-description').textContent = `${data.weather[0].description}`.toUpperCase();
