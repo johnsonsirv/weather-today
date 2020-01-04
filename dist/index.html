@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Weather - Widget</title>
+<link rel="shortcut icon" href="favicon-32x32.png"></head>
+<body>
+  <header>
+    <div class="brand">Weather Today</div>
+    <div class="search-form-section">
+      <form action="" id="search-form">
+        <input type="text" class="text-input" id="search-city-input" placeholder="e.g. Lagos">
+        <input type="button" class="btn" id="btn-search" value="GO">
+      </form>
+    </div>
+  </header>
+  <main id="main">
+    <div class="weather-top">
+      <div class="city-location">
+          <div><img id="weather-icon"></div>
+          <div id="weather-location"></div>
+      </div>
+      <div class="loader no-display" id="pre-loader"><img id="pre-loader-gif"></div>
+    </div>
+    <div class="city-temp-section">
+      <div class="weather-temp"><span id="weather-temp"></span><button class="btn" id="toggle-temp"></button>
+      </div>
+      <div class="weather-details">
+          <div><img id="weather-icon-2"></div>
+        <span id="weather-date-time"></span>
+        <p id="weather-main"></p>
+        <p id="weather-description"></p>
+      </div>
+    </div>
+    <div class="other-weather-details">
+      <span id="weather-wind"></span>
+      <span id="weather-humidity"></span>
+      <span id="sunrise"></span>
+      <span id="sunset"></span>
+    </div>
+  </main>
+<script type="text/javascript" src="app.bundle.js"></script><script type="text/javascript" src="data.bundle.js"></script></body>
+</html>

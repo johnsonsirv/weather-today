@@ -1,0 +1,11 @@
+
+# VSCode
+.vscode/*
+
+
+# System Files
+.DS_Store
+
+# npm
+.eslintrc.json
+node_modules
