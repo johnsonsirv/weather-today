@@ -1,7 +1,8 @@
 
 export default function importAll(r) {
   const images = {};
-  r.keys().map(image => {
+  // eslint-disable-next-line array-callback-return
+  r.keys().map((image) => {
     images[image.replace('./', '')] = r(image);
   });
   return images;

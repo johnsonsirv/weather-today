@@ -77,6 +77,7 @@ const makeAPICall = (url) => {
     })
     .then(response => response.json())
     .then(data => updateWeatherUI(data))
+    // eslint-disable-next-line no-alert
     .catch(() => alert('error: something went wrong. try again'));
 };
 
